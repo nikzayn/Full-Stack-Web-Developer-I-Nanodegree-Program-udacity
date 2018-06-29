@@ -1,0 +1,181 @@
+
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+            background: #41295a;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #2F0743, #41295a);
+            background: linear-gradient(to right, #2F0743, #41295a);
+            color:#fff;
+            font-family: 'Raleway', sans-serif;
+        }
+        p{
+            font-family: 'Open Sans', sans-serif;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            -webkit-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+            }
+        .movie-title::after{
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            -webkit-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+        }    
+        .movie-tile:hover {
+            -webkit-transform: scale(1.15, 1.15);
+            transform: scale(1.15, 1.15);
+            cursor: pointer;
+            background: #FF5F6D;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #FFC371, #FF5F6D);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #FFC371, #FF5F6D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+        .movie-tile:hover:after{
+            opacity: 1;
+        }
+        .mov{
+            box-shadow: 1px 4px 12px 1px rgba(0,0,0,0.4);
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="kmJLuwP3MbY" data-toggle="modal" data-target="#trailer">
+    <img src="https://prod1.agileticketing.net/images/user/ct_12655/Dark%20Knight.jpg" width="220" height="342" class = "mov">
+    <h2>The Dark Knight</h2>
+    <p>Batman to save Gotham city from Joker</p>
+    <p>Rating: 9/10</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="ykHeGtN4m94" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/b/bc/Love%2C_Simon_poster.png" width="220" height="342" class = "mov">
+    <h2>Love Simon</h2>
+    <p>A normal teenage and not so openly gay in school</p>
+    <p>Rating: 7.9/10</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="d3A3-zSOBT4" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg" width="220" height="342" class = "mov">
+    <h2>Inception</h2>
+    <p>The young girl who is the architect of the dreams.</p>
+    <p>Rating: 8.8/10</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="zSWdZVtXT7E" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg" width="220" height="342" class = "mov">
+    <h2>Interstellar</h2>
+    <p>For the search of new sustainable life in the heart of interstellar.</p>
+    <p>Rating: 8.6/10</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="SgduyXzxwS8" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg" width="220" height="342" class = "mov">
+    <h2>Forrest Gump</h2>
+    <p>Forrest Gump, a man with a low I.Q., joins the army for service</p>
+    <p>Rating: 8.8/10</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="JOFgLVjchHU" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/adw6Lq9FiC9zjYEpOqfq03ituwp.jpg" width="220" height="342" class = "mov">
+    <h2>Fight Club</h2>
+    <p>An insomniac with his mind problems</p>
+    <p>Rating: 8.8/10</p>
+</div>
+
+    </div>
+  </body>
+</html>
