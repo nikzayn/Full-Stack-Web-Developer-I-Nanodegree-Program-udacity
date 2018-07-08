@@ -1,4 +1,4 @@
-# [Udacity Build a Portfolio Site](https://github.com/udacity/Project-Descriptions-for-Review/blob/master/Front%20End/Build%20a%20Portfolio%20Site.md)
+# [Udacity Build a Portfolio Site](https://github.com/nikzayn/Full-Stack-Web-Developer-I-Nanodegree-Program-udacity/tree/Build-a-Portfolio-Website)
 
 Front-End Web Developer Nanodegree project.
 
